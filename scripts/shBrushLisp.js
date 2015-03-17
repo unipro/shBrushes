@@ -40,8 +40,7 @@
         }
 
         function getLispKeyword(str) {
-            str = joinWithOr(str);
-            return '\\b(?:' + str + ')(?=\\s)';
+            return '\\b(?:' + joinWithOr(str) + ')(?=\\s)';
         }
 
         function getLispKeywordAndName(str) {
@@ -91,7 +90,6 @@
             { regex: SyntaxHighlighter.regexLib.doubleQuotedString,
               css: 'string' },
             { regex: new RegExp(';.*', 'g'), css: 'comments' },
-
             { regex: new XRegExp(getLispKeywordAndName(fdefs), 'gmi'),
               func: functionProcess },
             { regex: new XRegExp(getLispKeywordAndName(vdefs), 'gmi'),
