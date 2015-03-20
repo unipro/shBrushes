@@ -25,13 +25,27 @@
                              : null));
 
     function Brush() {
-        var fdefs = 'defmacro defsubst defun';
-        var vdefs = 'defvar defparameter';
-        var kw = 'cond if while let let* progn prog1 prog2 lambda'
-                + ' unwind-protect condition-case when unless'
-                + ' with-output-to-string ignore-errors dotimes dolist'
-                + ' declare';
-        var errs = 'warn error signal';
+        var fdefs = 'defgeneric define-compiler-macro define-condition'
+                + ' define-method-combination define-modify-macro'
+                + ' define-setf-expander defmacro defmethod defsetf'
+                + ' defsubst defun';
+        var tdefs = 'defclass defpackage defstruct deftype';
+        var vdefs = 'defconstant define-symbol-macro defparameter defvar';
+        var kw = 'block break case ccase compiler-let cond condition-case'
+                + ' ctypecase declaim declare destructuring-bind do do*'
+                + ' dolist dotimes ecase etypecase eval-when flet go'
+                + ' handler-bind handler-case if ignore-errors in-package'
+                + ' labels lambda let let* letf locally loop macrolet'
+                + ' multiple-value-bind multiple-value-prog1 proclaim prog'
+                + ' prog* prog1 prog2 progn progv restart-bind restart-case'
+                + ' return return-from symbol-macrolet tagbody the typecase'
+                + ' unless unwind-protect when while with-accessors'
+                + ' with-accessors with-compilation-unit'
+                + ' with-condition-restarts with-hash-table-iterator'
+                + ' with-input-from-string with-open-file with-open-stream'
+                + ' with-output-to-string with-package-iterator'
+                + ' with-simple-restart with-slots with-standard-io-syntax';
+        var errs = 'abort assert cerror check-type error signal warn';
 
         function joinWithOr(str) {
             return str
@@ -67,6 +81,25 @@
             return result;
         }
 
+        function typeProcess(match, regexInfo) {
+            var constructor = SyntaxHighlighter.Match;
+            var result = [];
+
+            if (match.keyword != null) {
+                result.push(new constructor(match.keyword,
+                                            match.index + match[0].indexOf(match.keyword),
+                                            'keyword'));
+            }
+
+            if (match.name != null) {
+                result.push(new constructor(match.name,
+                                            match.index + match[0].lastIndexOf(match.name),
+                                            'color2'));
+            }
+
+            return result;
+        }
+
         function variableProcess(match, regexInfo) {
             var constructor = SyntaxHighlighter.Match;
             var result = [];
@@ -92,6 +125,8 @@
             { regex: new RegExp(';.*', 'g'), css: 'comments' },
             { regex: new XRegExp(getLispKeywordAndName(fdefs), 'gmi'),
               func: functionProcess },
+            { regex: new XRegExp(getLispKeywordAndName(tdefs), 'gmi'),
+              css: typeProcess },
             { regex: new XRegExp(getLispKeywordAndName(vdefs), 'gmi'),
               css: variableProcess },
             { regex: new RegExp(getLispKeyword(kw), 'gmi'),
