@@ -25,6 +25,7 @@
                              : null));
 
     function Brush() {
+        // Lisp, Common-Lisp
         var fdefs = 'defgeneric define-compiler-macro define-condition'
                 + ' define-method-combination define-modify-macro'
                 + ' define-setf-expander defmacro defmethod defsetf'
@@ -46,6 +47,26 @@
                 + ' with-output-to-string with-package-iterator'
                 + ' with-simple-restart with-slots with-standard-io-syntax';
         var errs = 'abort assert cerror check-type error signal warn';
+        // Elisp
+        fdefs += ' defadvice defalias define-derived-mode define-minor-mode'
+            + ' define-generic-mode define-global-minor-mode'
+            + ' define-globalized-minor-mode define-skeleton define-widget';
+        tdefs += ' defgroup deftheme';
+        vdefs += ' defconst defcustom defvaralias defvar-local defface';
+        kw += ' while-no-input letrec pcase pcase-let pcase-let*'
+            + ' save-restriction save-excursion save-selected-window'
+            + ' save-window-excursion save-current-buffer save-match-data'
+            + ' combine-after-change-calls condition-case-unless-debug'
+            + ' track-mouse eval-and-compile'
+            + ' eval-when-compile with-case-table with-category-table'
+            + ' with-coding-priority with-current-buffer with-demoted-errors'
+            + ' with-electric-help with-eval-after-load with-local-quit'
+            + ' with-no-warnings with-output-to-temp-buffer'
+            + ' with-selected-window with-selected-frame'
+            + ' with-silent-modifications with-syntax-table'
+            + ' with-temp-buffer with-temp-file with-temp-message'
+            + ' with-timeout with-timeout-handler';
+        errs += ' user-error';
 
         function joinWithOr(str) {
             return str
