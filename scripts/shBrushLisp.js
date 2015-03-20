@@ -78,9 +78,9 @@
             return '\\b(?:' + joinWithOr(str) + ')(?=\\s)';
         }
 
-        function getLispKeywordAndName(str) {
-            return '\\b(?<keyword>' + joinWithOr(str)
-                + ')\\s+(?<name>(?:\\w|-)+)';
+        function getLispKeywordAndName(keyStr) {
+            return '\\b(?<keyword>' + joinWithOr(keyStr)
+                + ')\\s+(?<name>[\\w!$%&*+-./:<=>?@^_~]+)';
         }
 
         function functionProcess(match, regexInfo) {
@@ -147,9 +147,9 @@
             { regex: new XRegExp(getLispKeywordAndName(fdefs), 'gmi'),
               func: functionProcess },
             { regex: new XRegExp(getLispKeywordAndName(tdefs), 'gmi'),
-              css: typeProcess },
+              func: typeProcess },
             { regex: new XRegExp(getLispKeywordAndName(vdefs), 'gmi'),
-              css: variableProcess },
+              func: variableProcess },
             { regex: new RegExp(getLispKeyword(kw), 'gmi'),
               css: 'keyword' },
             { regex: new RegExp(getLispKeyword(errs), 'gmi'),
