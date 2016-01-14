@@ -143,7 +143,7 @@
         this.regexList = [
             { regex: SyntaxHighlighter.regexLib.doubleQuotedString,
               css: 'string' },
-            { regex: new RegExp(';.*', 'g'), css: 'comments' },
+            { regex: new RegExp('([^&][^lg][^t]|^);.*', 'g'), css: 'comments' },
             { regex: new XRegExp(getLispKeywordAndName(fdefs), 'gmi'),
               func: functionProcess },
             { regex: new XRegExp(getLispKeywordAndName(tdefs), 'gmi'),
