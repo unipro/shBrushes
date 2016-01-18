@@ -26,18 +26,18 @@
 
     function Brush() {
         // Scheme
-        var defs = 'define '
-                + 'define-public define-method define-generic define-procedure'
-                + 'define-syntax define-macro'
-                + 'define-class'
-                + 'define-module';
+        var defs = 'define'
+                + ' define-public define-method define-generic define-procedure'
+                + ' define-syntax define-macro'
+                + ' define-class'
+                + ' define-module';
         var kw = 'begin call-with-current-continuation call/cc'
-                + 'call-with-input-file call-with-output-file case cond'
-                + 'do else for-each if lambda'
-                + 'let let* let-syntax letrec letrec-syntax'
-                + 'let-values let*-values'
-                + 'and or delay force'
-                + 'map syntax syntax-rules';
+                + ' call-with-input-file call-with-output-file case cond'
+                + ' do else for-each if lambda'
+                + ' let let* let-syntax letrec letrec-syntax'
+                + ' let-values let*-values'
+                + ' and or delay force'
+                + ' map syntax syntax-rules';
 
         function joinWithOr(str) {
             return str
@@ -49,25 +49,25 @@
             return '\\b(?:' + joinWithOr(str) + ')(?=\\s)';
         }
 
-        function getSchemeKeywordAndName(keyStr) {
-            return '\\b(?<keyword>' + joinWithOr(keyStr)
-                + ')\\s+\\(?(?<name>[\\w!$%&*+-./:<=>?@^_~]+)';
+        function getSchemeDefineAndName(keyStr) {
+            return '\\b(?<define>' + joinWithOr(keyStr)
+                + ')\\s+\\(?\\s*(?<name>[\\w!$%&*+-./:<=>?@^_~]+)';
         }
 
         function defineProcess(match, regexInfo) {
             var constructor = SyntaxHighlighter.Match;
             var result = [];
 
-            if (match.keyword != null) {
-                result.push(new constructor(match.keyword,
-                                            match.index + match[0].indexOf(match.keyword),
+            if (match.define != null) {
+                result.push(new constructor(match.define,
+                                            match.index + match[0].indexOf(match.define),
                                             'keyword'));
             }
 
             if (match.name != null) {
                 result.push(new constructor(match.name,
                                             match.index + match[0].lastIndexOf(match.name),
-                                            'functions'));
+                                            'variable'));
             }
 
             return result;
@@ -77,7 +77,7 @@
             { regex: SyntaxHighlighter.regexLib.doubleQuotedString,
               css: 'string' },
             { regex: new RegExp('([^&][^lg][^t]|^);.*', 'g'), css: 'comments' },
-            { regex: new XRegExp(getSchemeKeywordAndName(defs), 'gmi'),
+            { regex: new XRegExp(getSchemeDefineAndName(defs), 'gmi'),
               func: defineProcess },
             { regex: new RegExp(getSchemeKeyword(kw), 'gmi'),
               css: 'keyword' },
