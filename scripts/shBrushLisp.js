@@ -60,7 +60,7 @@
             + ' track-mouse eval-and-compile'
             + ' eval-when-compile with-case-table with-category-table'
             + ' with-coding-priority with-current-buffer with-demoted-errors'
-            + ' with-electric-help with-eval-after-load with-local-quit'
+            + ' with-electric-help (with-)?eval-after-load with-local-quit'
             + ' with-no-warnings with-output-to-temp-buffer'
             + ' with-selected-window with-selected-frame'
             + ' with-silent-modifications with-syntax-table'
@@ -80,7 +80,7 @@
 
         function getLispKeywordAndName(keyStr) {
             return '\\b(?<keyword>' + joinWithOr(keyStr)
-                + ')\\s+(?<name>[\\w!$%&*+-./:<=>?@^_~]+)';
+                + ')\\s+(?<name>[\'`]?[\\w!$%&*+-./:<=>?@^_~]+)';
         }
 
         function functionProcess(match, regexInfo) {
@@ -143,7 +143,10 @@
         this.regexList = [
             { regex: SyntaxHighlighter.regexLib.doubleQuotedString,
               css: 'string' },
-            { regex: new RegExp('([^&][^lg][^t]|^);.*', 'g'), css: 'comments' },
+            { regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString,
+              css: 'string' },
+            { regex: new RegExp('(^(?!.*&(lt|gt|amp))|\\s+|^);.*', 'g'), css: 'comments' },
+            { regex: new RegExp('&amp;[^\\s]+', 'g'), css: 'keyword' },
             { regex: new XRegExp(getLispKeywordAndName(fdefs), 'gmi'),
               func: functionProcess },
             { regex: new XRegExp(getLispKeywordAndName(tdefs), 'gmi'),
