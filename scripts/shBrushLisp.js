@@ -33,12 +33,12 @@
         var tdefs = 'defclass defpackage defstruct deftype';
         var vdefs = 'defconstant define-symbol-macro defparameter defvar';
         var kw = 'block break case ccase compiler-let cond condition-case'
-                + ' ctypecase declaim declare destructuring-bind do do*'
+                + ' ctypecase declaim declare destructuring-bind do do\\*'
                 + ' dolist dotimes ecase etypecase eval-when flet go'
                 + ' handler-bind handler-case if ignore-errors in-package'
-                + ' labels lambda let let* letf locally loop macrolet'
+                + ' labels lambda let let\\* letf locally loop macrolet'
                 + ' multiple-value-bind multiple-value-prog1 proclaim prog'
-                + ' prog* prog1 prog2 progn progv restart-bind restart-case'
+                + ' prog\\* prog1 prog2 progn progv restart-bind restart-case'
                 + ' return return-from symbol-macrolet tagbody the typecase'
                 + ' unless unwind-protect when while with-accessors'
                 + ' with-accessors with-compilation-unit'
@@ -53,7 +53,7 @@
             + ' define-globalized-minor-mode define-skeleton define-widget';
         tdefs += ' defgroup deftheme';
         vdefs += ' defconst defcustom defvaralias defvar-local defface';
-        kw += ' while-no-input letrec pcase pcase-let pcase-let*'
+        kw += ' while-no-input letrec pcase pcase-let pcase-let\\*'
             + ' save-restriction save-excursion save-selected-window'
             + ' save-window-excursion save-current-buffer save-match-data'
             + ' combine-after-change-calls condition-case-unless-debug'

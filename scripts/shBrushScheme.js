@@ -34,8 +34,8 @@
         var kw = 'begin call-with-current-continuation call/cc'
                 + ' call-with-input-file call-with-output-file case cond'
                 + ' do else for-each if lambda'
-                + ' let let* let-syntax letrec letrec-syntax'
-                + ' let-values let*-values'
+                + ' let let\\* let-syntax letrec letrec-syntax'
+                + ' let-values let\\*-values'
                 + ' and or delay force'
                 + ' map syntax syntax-rules';
 
