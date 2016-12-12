@@ -1,6 +1,6 @@
 /*
  * SyntaxHighlighter 3.0 brush for Lisp.
- * Copyright (C) 2015, Daniel Jun.
+ * Copyright (C) 2015, Byungwan Jun.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
