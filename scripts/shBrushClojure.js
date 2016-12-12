@@ -26,7 +26,7 @@
 
     function Brush() {
         // Clojure
-        var fdefs = 'defn';
+        var fdefs = 'defn defn- defmulti defmacro definline';
         var tdefs = 'defstruct deftype defprotocol defrecord';
         var vdefs = 'def defonce';
         var kw = 'do if let let\\* var fn fn\\* loop loop\\*'
