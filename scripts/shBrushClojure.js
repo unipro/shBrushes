@@ -1,5 +1,5 @@
 /*
- * SyntaxHighlighter 3.0 brush for Lisp.
+ * SyntaxHighlighter 3.0 brush for Clojure.
  * Copyright (C) 2015, Byungwan Jun.
  *
  * This library is free software; you can redistribute it and/or
