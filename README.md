@@ -1,2 +1,6 @@
-# shBrushLisp
-SyntaxHighlighter brush for Lisp.
+# shBrushes
+
+Lisp
+Scheme
+Clojure
+Rust
