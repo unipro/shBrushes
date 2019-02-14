@@ -45,7 +45,7 @@
               css: 'string' },
             { regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString,
               css: 'string' },
-            { regex: XRegExp('r(#*)"([^\\\\"]|\\\\.)*\\1"', 'gs'), // raw string
+            { regex: XRegExp('r(#*)"([^"]|"(?!\\1))*"\\1', 'gs'), // raw string
               css: 'string' },
             { regex: /b"([^\\"\n]|\\.)*"/g, css: 'string' }, // byte string
             { regex: /^ *#\!\[[^\]]+\]/gm, css: 'preprocessor' },
