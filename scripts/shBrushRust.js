@@ -41,13 +41,14 @@
               css: 'comments' },
             { regex: SyntaxHighlighter.regexLib.multiLineCComments,
               css: 'comments' },
+            { regex: XRegExp('r(#*)"([^"]|"(?!\\1))*"\\1', 'gs'), // raw string
+              css: 'string' },
+            { regex: /b"([^\\"\n]|\\.)*"/g, css: 'string' }, // byte string
+            { regex: /b'([^\\']|\\.)'/g, css: 'string' }, // byte char
             { regex: SyntaxHighlighter.regexLib.singleQuotedString,
               css: 'string' },
             { regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString,
               css: 'string' },
-            { regex: XRegExp('r(#*)"([^"]|"(?!\\1))*"\\1', 'gs'), // raw string
-              css: 'string' },
-            { regex: /b"([^\\"\n]|\\.)*"/g, css: 'string' }, // byte string
             { regex: /^ *#\!\[[^\]]+\]/gm, css: 'preprocessor' },
             { regex: new RegExp(this.getKeywords(datatypes), 'gm'),
               css: 'keyword' },
