@@ -1,0 +1,6 @@
+((nil . ((indent-tabs-mode . nil)
+         (c-basic-offset . 4)
+         (tab-width . 4)
+         (c-tab-always-indent . t)
+         (js-indent-level . 4)))
+ (js2-mode . ((js2-basic-offset . 4))))
