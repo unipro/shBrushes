@@ -41,7 +41,7 @@
               css: 'comments' },
             { regex: SyntaxHighlighter.regexLib.multiLineCComments,
               css: 'comments' },
-            { regex: XRegExp('r(#*)"([^"]|"(?!\\1))*"\\1', 'gs'), // raw string
+            { regex: XRegExp('b?r(#*)"([^"]|"(?!\\1))*"\\1', 'gs'), // raw string
               css: 'string' },
             { regex: /b"([^\\"\n]|\\.)*"/g, css: 'string' }, // byte string
             { regex: /b'([^\\']|\\.)'/g, css: 'string' }, // byte char
